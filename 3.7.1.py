@@ -28,10 +28,25 @@ while num_iter != 0:
     continue
 for i in lst:
     lst_2.append(i.split(";"))
-print (lst_2)
+
 for k in lst_2:
     k[1] = int(k[1])
     k[3] = int(k[3])
-    d[k[0]] = k
-    d[k[2]] = k
-print (d)
+    d[k[0]] = [0,0,0]
+    d[k[2]] = [0,0,0]
+
+for x in lst_2:
+    if x[1] > x[3]:
+        d[x[0]][0]+=1
+        d[x[2]][2]+=1
+    elif x[1] < x[3]:
+        d[x[0]][2] += 1
+        d[x[2]][0] += 1
+    else:
+        d[x[0]][1] += 1
+        d[x[2]][1] += 1
+for k, v in d.items():
+  res = v[0] * 3 + v[1]
+  v.insert(0, sum(v))
+  v.append(res)
+  print(k + ':', *v)

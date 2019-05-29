@@ -18,3 +18,4 @@ lst = response.text.splitlines()
 
 print (len(lst))
 
+file.close()
